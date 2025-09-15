@@ -1,3 +1,17 @@
+/* Description
+
+This SQL script creates Silver Layer tables for a data warehouse by refining the raw Bronze layer data. Key features include:
+
+Structures for CRM (customers, products, sales) and ERP (customers, locations, product categories).
+
+Conversion of datatypes (e.g., bigint dates from Bronze → date in Silver).
+
+Addition of a data warehouse timestamp (dwh_create_date) to track data load history.
+
+Cleaned and standardized schema ready for transformations in the Gold layer.*/
+
+
+
 if OBJECT_ID('silver.crm_cust_info', 'U') is not null
 	drop table silver.crm_cust_info;
 Create table silver.crm_cust_info (
