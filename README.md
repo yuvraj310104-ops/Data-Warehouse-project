@@ -2,7 +2,9 @@
 
 <p id="description">This project demonstrates the design of a Data Warehouse pipeline using the Bronze → Silver → Gold layered architecture. The workflow ingests raw data (CSV files) cleans and transforms it and finally structures it into a star schema for reporting and analytics. 
 
-🗂️ Data Layers 🔹 Bronze Layer (Raw Data) Stores raw CRM &amp; ERP data as ingested from CSV files. Implemented with staging tables (bronze.*). Loaded using BULK INSERT via stored procedure bronze.load_bronze. Data Sources: CRM: Customers Products Sales Details ERP: Customer Info Locations Product Categories 
+🗂️ Data Layers 
+
+🔹 Bronze Layer (Raw Data) Stores raw CRM &amp; ERP data as ingested from CSV files. Implemented with staging tables (bronze.*). Loaded using BULK INSERT via stored procedure bronze.load_bronze. Data Sources: CRM: Customers Products Sales Details ERP: Customer Info Locations Product Categories 
 
 🔸 Silver Layer (Cleansed &amp; Standardized) Applies data cleaning deduplication and standardization. Ensures data quality for further transformations. Loaded using stored procedure silver.load_silver. Key Transformations: Customers: Deduplicate by keeping latest records standardize gender &amp; marital status. Products: Extract category IDs map product lines calculate product end dates. Sales: Fix invalid dates validate sales = quantity × price correct missing prices. ERP Data: Normalize IDs clean country codes validate birthdates standardize gender. 
 
