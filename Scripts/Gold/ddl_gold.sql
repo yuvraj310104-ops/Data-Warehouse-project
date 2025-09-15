@@ -1,3 +1,23 @@
+/* Description
+
+This script creates Gold Layer views that serve as the final analytics-ready data model for reporting and BI.
+gold.dim_customers
+Builds a customer dimension with unique surrogate keys.
+Combines CRM and ERP data for enriched attributes (country, gender, birthdate, marital status).
+Applies CRM as the master source for gender while using ERP as fallback.
+gold.dim_product
+Creates a product dimension with surrogate keys.
+Joins CRM product details with ERP category data (category, subcategory, maintenance).
+Keeps only active products (excludes historical records).
+gold.fact_sales
+Builds the central fact table with sales transactions.
+Links to customer and product dimensions using surrogate keys.
+Provides clean measures: sales amount, quantity, and price.
+Together, these form a star schema (Fact + Dimensions) suitable for dashboards, reporting, and advanced analytics.*/
+
+
+
+
 create view gold.dim_customers as
 select 
 	ROW_NUMBER() over(order by cst_id) as customer_key,
