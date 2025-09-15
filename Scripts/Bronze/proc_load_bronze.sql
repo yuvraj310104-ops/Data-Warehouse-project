@@ -1,3 +1,21 @@
+/* Description
+
+This stored procedure (bronze.load_bronze) automates the loading of CSV files into the Bronze Layer of a data warehouse. It performs the following steps:
+
+Truncates existing tables before loading.
+
+Uses BULK INSERT to load CRM and ERP datasets (customers, products, sales, locations, categories).
+
+Tracks execution time for each table load and the overall batch.
+
+Includes error handling to capture and print any load failures.
+
+This procedure ensures a consistent and efficient ETL process for raw data ingestion into the Bronze layer.*/
+
+
+
+
+
 create or alter procedure bronze.load_bronze as
 begin
     declare @start_time datetime , @end_time datetime , @batch_start_time datetime , @batch_end_time datetime
