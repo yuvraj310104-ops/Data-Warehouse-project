@@ -1,3 +1,14 @@
+/*Description
+
+This SQL script creates sample bronze layer tables for a CRM and ERP system. 
+It includes customer, product, sales, location, and category data structures. The script ensures old versions of the tables are dropped if they exist, 
+then recreates them with appropriate schema definitions for use in a data warehouse or ETL pipeline.*/
+
+
+
+
+
+
 if OBJECT_ID('bronze.crm_cust_info', 'U') is not null
 	drop table bronze.crm_cust_info;
 Create table bronze.crm_cust_info (
