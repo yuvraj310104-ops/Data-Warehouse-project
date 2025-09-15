@@ -1,3 +1,23 @@
+/* Description
+
+This stored procedure (silver.load_silver) transforms and loads data from the Bronze Layer into the Silver Layer of the data warehouse. Key steps:
+
+Customer Data (CRM): Deduplicates records, standardizes marital status and gender, and keeps the latest entry.
+
+Product Data (CRM): Extracts category IDs, standardizes product line values, sets missing costs to 0, and calculates product end dates.
+
+Sales Data (CRM): Cleans invalid/malformed dates, fixes incorrect sales values, and ensures consistent price calculations.
+
+Customer Data (ERP): Normalizes customer IDs, validates birthdates, and standardizes gender values.
+
+Location Data (ERP): Cleans country codes, expands abbreviations, and handles missing values.
+
+Product Categories (ERP): Moves as-is into Silver for further transformations.
+
+This process cleans, standardizes, and structures data to make it analytics-ready for the Gold Layer.*/
+
+
+
 exec silver.load_silver;
 
 create or alter procedure silver.load_silver as
